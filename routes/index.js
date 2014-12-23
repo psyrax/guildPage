@@ -62,9 +62,6 @@ setInterval(function(){
 module.exports = router;
 
 
-
-
-
 function membersUpdate(){
 	var guildOptions = {
 		name: 'Ðeal Wîth ît',
