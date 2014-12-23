@@ -25,5 +25,29 @@ angular.module('dwiApp', [])
 			});
 		});
 	};
+	function getMembers(){
+		$http.get('/members')
+		.success(function(members){
+			$scope.members = members;
+		});
+	};
+	getMembers();
 	getStream();
+	$scope.streamTab = true;
+	$scope.membersTab = false;
+	$scope.setTab = function(tab){
+		$('.tabCheck').removeClass('active');
+		switch(tab){
+			case 'stream':
+			$scope.membersTab = false;
+			$scope.streamTab = true;
+			$('#tabStream').addClass('active');
+			break;
+			case 'members':
+			$scope.streamTab = false;
+			$scope.membersTab = true;
+			$('#tabMembers').addClass('active');
+			break;
+		}
+	};
 }]);

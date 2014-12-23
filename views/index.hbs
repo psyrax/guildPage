@@ -6,9 +6,19 @@
   </div>
 </div>
 <div class="row" ng-controller="streamController">
-  <h3>Activity stream</h3>
-  <dl class="dl-horizontal" ng-repeat="new in news">
-    <dt>\{{new.character}}</dt>
-    <dd>\{{new.typeFancy}} - \{{new.achievement.description}}\{{new.item.name}}</dd>
-  </dl>
+  <div class="col-sm-12">
+    <ul class="nav nav-pills">
+      <li role="presentation" class="active tabCheck" ng-click="setTab('stream');" id="tabStream"><a href="#">Actividad</a></li>
+      <li role="presentation" class="tabCheck" ng-click="setTab('members');" id="tabMembers"><a href="#">Miembros</a></li>
+    </ul>
+  </div>
+  <div class="col-sm-12" style="margin-top:1em;"  ng-show="streamTab">
+    <dl class="dl-horizontal" ng-repeat="new in news">
+      <dt>\{{new.character}}</dt>
+      <dd>\{{new.typeFancy}} - \{{new.achievement.description}}\{{new.item.name}}</dd>
+    </dl>
+  </div>
+  <div class="col-sm-12" style="margin-top:1em;"  ng-show="membersTab">
+    <img ng-repeat="member in members" src="http://us.battle.net/static-render/us/\{{member.character.thumbnail}}" title="\{{member.character.name}}" class="userAvatars">
+  </div>
 </div>
