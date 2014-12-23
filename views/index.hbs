@@ -19,6 +19,11 @@
     </dl>
   </div>
   <div class="col-sm-12" style="margin-top:1em;"  ng-show="membersTab">
-    <img ng-repeat="member in members" src="http://us.battle.net/static-render/us/\{{member.character.thumbnail}}" title="\{{member.character.name}}" class="userAvatars">
+    <h4>Somos \{{members.length}}</h4>
+    <img  dir-paginate="member in members | itemsPerPage: 100" data-original="http://us.battle.net/static-render/us/\{{member.character.thumbnail}}" title="\{{member.character.name}}" class="userAvatars lazy">
+    <div class="row">
+      <div class="col-sm-12 text-center">
+         <dir-pagination-controls template-url="pageControl.tpl.html"></dir-pagination-controls>
+      </div>
   </div>
 </div>

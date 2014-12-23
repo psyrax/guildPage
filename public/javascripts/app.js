@@ -1,4 +1,4 @@
-angular.module('dwiApp', [])
+angular.module('dwiApp', ['angularUtils.directives.dirPagination'])
 .controller('streamController', ['$scope', '$http', function($scope, $http){
 	function getStream(){
 		$http.get('/stream')
@@ -50,4 +50,12 @@ angular.module('dwiApp', [])
 			break;
 		}
 	};
-}]);
+}])
+.directive('lazy', function($timeout) {
+	return {
+		restrict: 'C',
+		link: function (scope, elm, attrs) {
+			$timeout(function() { $(elm).lazyload({event: 'loadlazy'}); $(elm).trigger('loadlazy') }, 0); 
+		}
+	}
+});;
