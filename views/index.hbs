@@ -20,7 +20,24 @@
   </div>
   <div class="col-sm-12" style="margin-top:1em;"  ng-show="membersTab">
     <h4>Somos \{{members.length}}</h4>
-    <img  dir-paginate="member in members | itemsPerPage: 100" data-original="http://us.battle.net/static-render/us/\{{member.character.thumbnail}}" title="\{{member.character.name}}" class="userAvatars lazy">
+    <div class="row">
+      <div class="col-sm-12">
+        <input ng-model="searchText" class="form-control" placeholder="buscar"/>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6"  dir-paginate="member in members | itemsPerPage: 100 | filter:searchText">
+        <div class="media" style="height:100px">
+          <a class="media-left" href="#">
+             <img  data-original="http://us.battle.net/static-render/us/\{{member.character.thumbnail}}" title="\{{member.character.name}}" class="userAvatars lazy">
+          </a>
+          <div class="media-body">
+            <h4 class="media-heading">\{{member.character.name}} - Nivel \{{member.character.level}} <small>\{{printClass(member.character.class)}}</small></h4>
+            <p>\{{member.character.spec.description}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="row">
       <div class="col-sm-12 text-center">
          <dir-pagination-controls template-url="pageControl.tpl.html"></dir-pagination-controls>

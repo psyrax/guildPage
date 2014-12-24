@@ -50,6 +50,46 @@ angular.module('dwiApp', ['angularUtils.directives.dirPagination'])
 			break;
 		}
 	};
+	angular.extend($scope, {
+      printClass : function(classId){
+      	console.log('class')
+			switch(classId){
+				case 1:
+				return 'Warrior';
+				break;
+				case 2:
+				return 'Paladin';
+				break;
+				case 3:
+				return 'Hunter';
+				break;
+				case 4:
+				return 'Rogue';
+				break;
+				case 5:
+				return 'Priest';
+				break;
+				case 6:
+				return 'Deathknight';
+				break;
+				case 7:
+				return 'Shaman';
+				break;
+				case 8:
+				return 'Mage';
+				break;
+				case 9:
+				return 'Warlock';
+				break;
+				case 10:
+				return 'Paladin';
+				break;
+				case 11:
+				return 'Druid';
+				break;
+			}
+		}
+    });
 }])
 .directive('lazy', function($timeout) {
 	return {
